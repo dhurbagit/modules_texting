@@ -1,0 +1,43 @@
+class Lightbox extends ET_Builder_Module {
+
+private $slug = 'simple_simple_head';
+public $vb_support = 'on';
+
+
+public function init(){
+  $this->name = esc_html__'Simple', 'simple_simple_head');
+}
+
+public function get_fields(){
+  
+  return array(
+          'heading'     => array(
+				'label'           => esc_html__( 'Heading', 'simple_simple_head' ),
+				'type'            => 'text',
+				'option_category' => 'basic_option',
+				'description'     => esc_html__( 'Input your desired heading here.', 'simple_simple_head' ),
+				'toggle_slug'     => 'main_content',
+			),
+			'content'     => array(
+				'label'           => esc_html__( 'Content', 'simple_simple_head' ),
+				'type'            => 'tiny_mce',
+				'option_category' => 'basic_option',
+				'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'simp-simple-extension' ),
+				'toggle_slug'     => 'main_content',
+			),
+  );
+  
+}
+
+
+public function render($unprocessed_props, $content = null, $render_slug){
+
+return sprintf(' <h1 class="simple_simple_head">%1$s</h1><p>%2$s</p>'
+                  esc_html__($this->prop['heading']),
+                  $this->props['content']);
+
+}
+
+
+
+}
